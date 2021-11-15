@@ -12,7 +12,7 @@ namespace Methapone
             Console.WriteLine("Hi User!");
             do
             {
-                Console.WriteLine("Write a word:");
+                Console.WriteLine("Write a word or enter 1 to finish:");
                 text = Console.ReadLine();
                 CreateMetaphoneWithoutVowel();
                 CreateMetaphoneWithVowel();
@@ -89,7 +89,8 @@ namespace Methapone
 
 
             //if text ends with mb -> delete b 
-            if (text.Contains("b") && text.EndsWith("mb"))  text = text.Remove(text.Length - 1, 1);
+            if (text.Contains("b") && text.EndsWith("mb"))  
+                text = text.Remove(text.Length - 1, 1);
             else if (text.Contains("b")) text = text.Replace("b", "B");
 
 
@@ -228,7 +229,8 @@ namespace Methapone
                 }
 
                 else if (text.Contains("tch")) text = text.Replace("tch", "ch");
-                else if (text.Contains("th")) text = text.Replace("th", "O");
+                else if (text.Contains("th")|| text.Contains("Th")||text.Contains("tH") || text.Contains("TH"))
+                    text = Regex.Replace(text, "th", "0", RegexOptions.IgnoreCase);              
                 else text = text.Replace("t", "T");
             }
 
